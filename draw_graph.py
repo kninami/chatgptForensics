@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 import plotly.express as px
 
@@ -7,8 +8,8 @@ def main(csv_file_path):
     df = pd.read_csv(csv_file_path)
 
     #create new dataframe for graph  
-    chat_log_count = df.groupby('chat_id').size().reset_index(name='log_count')
-    graph_df = df[['chat_id', 'created_at', 'title']].drop_duplicates().merge(chat_log_count, on='chat_id')
+    chat_log_count = df.groupby('conversation_id').size().reset_index(name='log_count')
+    graph_df = df[['conversation_id', 'created_at', 'title']].drop_duplicates().merge(chat_log_count, on='conversation_id')
 
     #create histogram
     x = graph_df['created_at']
@@ -22,7 +23,7 @@ def main(csv_file_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python chatgptForensics.py </path/to/chatgpt_parsed_chat_log.csv>")
+        print("Usage: python draw_graph.py </path/to/chatgpt_parsed_chat_log.csv>")
         sys.exit(1)
 
     file_path = sys.argv[1]
