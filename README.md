@@ -2,7 +2,7 @@
 
 ## Overview 
 
-This is a Python Project consisting of two scripts: one for parsing data and disaplying it as foresic data(including a hash value of each chat log), and another for drawing graphs based on the parsed data.
+This is a Python Project consisting of two scripts: one for parsing data and disaplying it as forensic data(including the hash value of each chat log), and another for drawing graphs based on the parsed data.
 
 Before using this project, you sould obtain ``conversations.json`` from ChatGPT website (settings > data control > export data)
 
@@ -10,6 +10,7 @@ Before using this project, you sould obtain ``conversations.json`` from ChatGPT 
 
 1. Clone this repository
 ```
+git clone https://github.com/kninami/chatgptForensics.git
 ```
 
 2. Create and activate a virtual environment (in root folder)
@@ -30,7 +31,7 @@ pip install -r requirements.txt
 python parse_data.py /path/to/conversations.json 
 ```
 
-2. **draw_graph.py** : Run this script to draw graphs based on the parsed data.
+2. **draw_graph.py** : Run this script to draw graphs based on the parsed data
 ```
-python draw_graph.py
+python draw_graph.py /path/to/chatgpt_parsed_cat_log.csv 
 ```
