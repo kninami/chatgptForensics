@@ -69,13 +69,12 @@ def main(file_path):
             webpage_df = pd.DataFrame(metadata_list_data)
             webpage_df_array.append(webpage_df)
                 
-        #export to csv file
         combined_df = pd.concat(main_chat_df_array, ignore_index=True)
         combined_attachment_df = pd.concat(attachment_df_array, ignore_index=True)
         combined_webpage_df = pd.concat(webpage_df_array, ignore_index=True)
-        #combined_df.to_csv('chatgpt_parsed_chat_log.csv', index=False)
         
-        with pd.ExcelWriter('output.xlsx') as writer:
+        #export to excel file
+        with pd.ExcelWriter('chatgpt_parsed_data.xlsx') as writer:
             combined_df.to_excel(writer, sheet_name='Conversation List', index=False)
             combined_attachment_df.to_excel(writer, sheet_name='Attachment List', index=False)
             combined_webpage_df.to_excel(writer, sheet_name='Webpage List', index=False)
