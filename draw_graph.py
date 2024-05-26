@@ -18,7 +18,7 @@ def main(csv_file_path):
     df = px.data.tips()
     fig = px.histogram(graph_df, x=x, y=y, color="title", marginal="rug", hover_data=graph_df.columns)
 
-    fig.show()
+    fig.write_html('chatgpt_chat_graph.html')
 
 
 if __name__ == "__main__":
